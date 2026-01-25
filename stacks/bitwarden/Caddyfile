@@ -1,0 +1,10 @@
+pihole.home.arpa {
+  tls internal
+  reverse_proxy 127.0.0.1:8081
+}
+
+bitwarden.home.arpa {
+  tls internal
+  reverse_proxy 127.0.0.1:8080
+}
+

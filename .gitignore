@@ -1,0 +1,14 @@
+# --- Secrets ---
+**/*.env
+**/settings.env
+
+# --- Local persistent state / databases (do not commit) ---
+backups/
+
+# Pi-hole state (big + constantly changing)
+stacks/pihole/etc-pihole/
+
+# Bitwarden persistent state (stored in docker volume, but ignore if ever appears)
+**/bwdata/
+**/bitwarden-data/
+
