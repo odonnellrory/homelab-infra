@@ -8,3 +8,13 @@ bitwarden.home.arpa {
   reverse_proxy 127.0.0.1:8080
 }
 
+homarr.home.arpa {
+  tls internal
+  reverse_proxy 127.0.0.1:7575
+}
+
+uptime.home.arpa {
+  tls internal
+  reverse_proxy 127.0.0.1:3001
+}
+
