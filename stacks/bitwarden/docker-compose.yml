@@ -1,0 +1,25 @@
+services:
+  bitwarden:
+    image: ghcr.io/bitwarden/lite
+    restart: always
+    env_file:
+      - settings.env
+    volumes:
+      - bwdata:/etc/bitwarden
+    ports:
+      - "8080:8080"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  bwdata:
+  caddy_data:
+  caddy_config:
+
