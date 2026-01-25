@@ -9,7 +9,7 @@ services:
       FTLCONF_webserver_port: "8081"
       FTLCONF_dns_listeningMode: "all"
     volumes:
-      - ./etc-pihole:/etc/pihole
+      - ${HOMELAB_DATA}/pihole/etc-pihole:/etc/pihole
     cap_add:
       - NET_ADMIN
 

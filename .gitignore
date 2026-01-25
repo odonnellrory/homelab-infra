@@ -1,6 +1,11 @@
-# --- Secrets ---
+# --- Secrets / machine-local config ---
+.env
 **/*.env
 **/settings.env
+
+# Allow safe examples to be committed
+!**/*.env.example
+!**/settings.env.example
 
 # --- Local persistent state / databases (do not commit) ---
 backups/
@@ -8,7 +13,9 @@ backups/
 # Pi-hole state (big + constantly changing)
 stacks/pihole/etc-pihole/
 
-# Bitwarden persistent state (stored in docker volume, but ignore if ever appears)
+# Common service data dirs (if they ever appear)
+**/data/
+**/db/
 **/bwdata/
 **/bitwarden-data/
 
