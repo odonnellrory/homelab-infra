@@ -3,7 +3,7 @@ services:
     image: ghcr.io/bitwarden/lite
     restart: always
     env_file:
-      - settings.env
+      - ${HOMELAB_DATA}/bitwarden/settings.env
     volumes:
       - bwdata:/etc/bitwarden
     ports:

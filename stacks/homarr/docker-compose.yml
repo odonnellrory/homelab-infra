@@ -1,0 +1,21 @@
+services:
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    restart: unless-stopped
+
+    ports:
+      - "7575:7575"
+
+    environment:
+      - TZ=${TZ}
+
+    volumes:
+      # Let Homarr read Docker status
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+      # Persistent Homarr config/data (OUTSIDE repo)
+      - ${HOMELAB_DATA}/homarr/configs:/app/data/configs
+      - ${HOMELAB_DATA}/homarr/icons:/app/public/icons
+      - ${HOMELAB_DATA}/homarr/data:/data
+
