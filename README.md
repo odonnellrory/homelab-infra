@@ -1,11 +1,10 @@
 # homelab-infra
 
-This repository contains the Docker Compose stacks that power my Raspberry Pi homelab.
-
-The goal is to keep a clean, version-controlled “source of truth” for my home services so I can rebuild or migrate to another host quickly.
+This repo contains the Docker Services that run on the Raspberry Pi component of my homelab.  
 
 This repo intentionally **does not** contain persistent application data (databases, configs, secrets).
-That data lives in a separate folder on the host: `~/homelab-data/`.
+
+That data lives in a separate folder on the Pi: `~/homelab-data/`.
 
 ---
 
