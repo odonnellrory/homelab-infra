@@ -8,9 +8,9 @@ bitwarden.home.arpa {
   reverse_proxy 127.0.0.1:8080
 }
 
-homarr.home.arpa {
+glance.home.arpa {
   tls internal
-  reverse_proxy 127.0.0.1:7575
+  reverse_proxy 127.0.0.1:8085
 }
 
 uptime.home.arpa {
@@ -18,3 +18,32 @@ uptime.home.arpa {
   reverse_proxy 127.0.0.1:3001
 }
 
+cockpit.home.arpa {
+  tls internal
+
+  reverse_proxy https://127.0.0.1:9090 {
+    transport http {
+      tls_insecure_skip_verify
+    }
+  }
+}
+
+jellyfin.home.arpa {
+  tls internal
+  reverse_proxy http://192.168.0.190:8096
+}
+
+omv.home.arpa {
+  tls internal
+  reverse_proxy 192.168.0.28
+}
+
+homebox.home.arpa {
+  tls internal
+  reverse_proxy 192.168.0.18:7745
+}
+
+actual.home.arpa {
+  tls internal
+  reverse_proxy 127.0.0.1:5006
+}
