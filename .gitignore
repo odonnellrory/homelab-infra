@@ -1,4 +1,4 @@
-# --- Secrets / machine-local config ---
+# Secrets / machine-local config
 .env
 **/*.env
 **/settings.env
@@ -7,15 +7,19 @@
 !**/*.env.example
 !**/settings.env.example
 
-# --- Local persistent state / databases (do not commit) ---
+# Local persistent state / databases
 backups/
-
-# Pi-hole state (big + constantly changing)
 stacks/pihole/etc-pihole/
-
-# Common service data dirs (if they ever appear)
 **/data/
 **/db/
 **/bwdata/
 **/bitwarden-data/
+
+# Secrets / keys
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+**/*.kdbx
+**/secrets/
 

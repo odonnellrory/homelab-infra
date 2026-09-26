@@ -4,6 +4,62 @@ services:
     container_name: caddy
     restart: unless-stopped
     network_mode: host
+
+    environment:
+      PI_LOCAL_HOST: "${PI_LOCAL_HOST}"
+
+      AI_SERVER_HOST: "${AI_SERVER_HOST}"
+      PROXMOX_HOST: "${PROXMOX_HOST}"
+      TNAS_HOST: "${TNAS_HOST}"
+
+      PIHOLE_URL: "${PIHOLE_URL}"
+      PIHOLE_PORT: "${PIHOLE_PORT}"
+
+      BITWARDEN_URL: "${BITWARDEN_URL}"
+      BITWARDEN_PORT: "${BITWARDEN_PORT}"
+
+      GLANCE_URL: "${GLANCE_URL}"
+      GLANCE_PORT: "${GLANCE_PORT}"
+
+      UPTIME_URL: "${UPTIME_URL}"
+      UPTIME_PORT: "${UPTIME_PORT}"
+
+      ACTUAL_URL: "${ACTUAL_URL}"
+      ACTUAL_PORT: "${ACTUAL_PORT}"
+
+      PI_COCKPIT_URL: "${PI_COCKPIT_URL}"
+      PI_COCKPIT_PORT: "${PI_COCKPIT_PORT}"
+
+      SILLYTAVERN_URL: "${SILLYTAVERN_URL}"
+      SILLYTAVERN_PORT: "${SILLYTAVERN_PORT}"
+
+      OPENWEBUI_URL: "${OPENWEBUI_URL}"
+      OPENWEBUI_PORT: "${OPENWEBUI_PORT}"
+
+      CHATTERBOX_URL: "${CHATTERBOX_URL}"
+      CHATTERBOX_API_PORT: "${CHATTERBOX_API_PORT}"
+      CHATTERBOX_WEB_PORT: "${CHATTERBOX_WEB_PORT}"
+
+      UBUNTU_COCKPIT_URL: "${UBUNTU_COCKPIT_URL}"
+      UBUNTU_COCKPIT_PORT: "${UBUNTU_COCKPIT_PORT}"
+
+      INVOKEAI_URL: "${INVOKEAI_URL}"
+      INVOKEAI_PORT: "${INVOKEAI_PORT}"
+
+      PVE_URL: "${PVE_URL}"
+      PVE_PORT: "${PVE_PORT}"
+
+      TNAS_URL: "${TNAS_URL}"
+      TNAS_HTTPS_PORT: "${TNAS_HTTPS_PORT}"
+
+      JELLYFIN_URL: "${JELLYFIN_URL}"
+
+      PAPERLESS_URL: "${PAPERLESS_URL}"
+      PAPERLESS_PORT: "${PAPERLESS_PORT}"
+
+      KAVITA_URL: "${KAVITA_URL}"
+      KAVITA_PORT: "${KAVITA_PORT}"
+
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
@@ -13,7 +69,7 @@ volumes:
   caddy_data:
     external: true
     name: bitwarden_caddy_data
+
   caddy_config:
     external: true
     name: bitwarden_caddy_config
-
