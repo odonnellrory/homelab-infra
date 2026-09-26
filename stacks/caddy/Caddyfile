@@ -1,0 +1,142 @@
+# ============================================================
+# HOMELAB CADDY REVERSE PROXY
+#
+# Environment-specific topology is stored outside Git in .env.
+# This file contains the actual reverse-proxy configuration.
+# ============================================================
+
+
+# ============================================================
+# RASPBERRY PI - LOCAL SERVICES
+# ============================================================
+
+{$PIHOLE_URL} {
+    tls internal
+
+    redir / /admin/ 302
+
+    reverse_proxy http://{$PI_LOCAL_HOST}:{$PIHOLE_PORT}
+}
+
+{$BITWARDEN_URL} {
+    tls internal
+    reverse_proxy http://{$PI_LOCAL_HOST}:{$BITWARDEN_PORT}
+}
+
+{$GLANCE_URL} {
+    tls internal
+    reverse_proxy http://{$PI_LOCAL_HOST}:{$GLANCE_PORT}
+}
+
+{$UPTIME_URL} {
+    tls internal
+    reverse_proxy http://{$PI_LOCAL_HOST}:{$UPTIME_PORT}
+}
+
+{$ACTUAL_URL} {
+    tls internal
+    reverse_proxy http://{$PI_LOCAL_HOST}:{$ACTUAL_PORT}
+}
+
+{$PI_COCKPIT_URL} {
+    tls internal
+
+    reverse_proxy https://{$PI_LOCAL_HOST}:{$PI_COCKPIT_PORT} {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+
+# ============================================================
+# UBUNTU AI SERVER
+# ============================================================
+
+{$SILLYTAVERN_URL} {
+    tls internal
+    reverse_proxy http://{$AI_SERVER_HOST}:{$SILLYTAVERN_PORT}
+}
+
+{$OPENWEBUI_URL} {
+    tls internal
+    reverse_proxy http://{$AI_SERVER_HOST}:{$OPENWEBUI_PORT}
+}
+
+{$CHATTERBOX_URL} {
+    tls internal
+
+    handle /v1/* {
+        reverse_proxy http://{$AI_SERVER_HOST}:{$CHATTERBOX_API_PORT}
+    }
+
+    handle {
+        reverse_proxy http://{$AI_SERVER_HOST}:{$CHATTERBOX_WEB_PORT}
+    }
+}
+
+{$UBUNTU_COCKPIT_URL} {
+    tls internal
+
+    reverse_proxy https://{$AI_SERVER_HOST}:{$UBUNTU_COCKPIT_PORT} {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+{$INVOKEAI_URL} {
+    tls internal
+    reverse_proxy http://{$AI_SERVER_HOST}:{$INVOKEAI_PORT}
+}
+
+
+# ============================================================
+# PROXMOX HOST
+# ============================================================
+
+{$PVE_URL} {
+    tls internal
+
+    reverse_proxy https://{$PROXMOX_HOST}:{$PVE_PORT} {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+
+# ============================================================
+# TERRAMASTER NAS
+# ============================================================
+
+{$TNAS_URL} {
+    tls internal
+
+    reverse_proxy https://{$TNAS_HOST}:{$TNAS_HTTPS_PORT} {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+{$JELLYFIN_URL} {
+    tls internal
+
+    redir / /jellyfin/ 302
+
+    reverse_proxy https://{$TNAS_HOST}:{$TNAS_HTTPS_PORT} {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
+{$PAPERLESS_URL} {
+    tls internal
+    reverse_proxy http://{$TNAS_HOST}:{$PAPERLESS_PORT}
+}
+
+{$KAVITA_URL} {
+    reverse_proxy {$TNAS_HOST}:{$KAVITA_PORT}
+}
