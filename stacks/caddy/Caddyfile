@@ -106,6 +106,13 @@
 }
 
 
+{$SPIDERFOOT_URL} {
+	tls internal
+	reverse_proxy http://{$SPIDERFOOT_HOST}:{$SPIDERFOOT_PORT} {
+	}
+}
+
+
 # ============================================================
 # TERRAMASTER NAS
 # ============================================================
