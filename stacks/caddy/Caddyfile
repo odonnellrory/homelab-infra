@@ -23,21 +23,6 @@
     reverse_proxy http://{$PI_LOCAL_HOST}:{$BITWARDEN_PORT}
 }
 
-{$GLANCE_URL} {
-    tls internal
-    reverse_proxy http://{$PI_LOCAL_HOST}:{$GLANCE_PORT}
-}
-
-{$UPTIME_URL} {
-    tls internal
-    reverse_proxy http://{$PI_LOCAL_HOST}:{$UPTIME_PORT}
-}
-
-{$ACTUAL_URL} {
-    tls internal
-    reverse_proxy http://{$PI_LOCAL_HOST}:{$ACTUAL_PORT}
-}
-
 {$PI_COCKPIT_URL} {
     tls internal
 
@@ -109,6 +94,13 @@
 {$SPIDERFOOT_URL} {
 	tls internal
 	reverse_proxy http://{$SPIDERFOOT_HOST}:{$SPIDERFOOT_PORT} {
+	}
+}
+
+
+{$INTELOWL_URL} {
+	tls internal
+	reverse_proxy http://{$INTELOWL_HOST}:{$INTELOWL_PORT} {
 	}
 }
 
